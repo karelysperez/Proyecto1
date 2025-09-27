@@ -7,30 +7,42 @@
     <title>Todo List</title>
   </head>
   <body>
+
     <div id="header">
       <h1>Todo List</h1>
     </div>
-    
-    <button id="addTaskBtn">Add Task</button>
 
-      <table id="taskTable">
-        <thead id="tableHeader">
-          <tr>
-            <th>Task Name</th>
-            <th>Task Description</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+    <div class="content">
+      
+      <button id="addTaskBtn">Add Task</button>
 
-        <tbody id="taskBody"></tbody>
-      </table>
+      <div class="tableContainer">
 
-    <form id="taskForm" style="display:none;">
-      <input type="text" id="taskName" placeholder="Task Name" required />
-      <input type="text" id="taskDesc" placeholder="Task Description" required />
-    </form>
+        <table id="taskTable">
+          <thead id="tableHeader">
+            <tr>
+              <th>Task Name</th>
+              <th>Task Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
 
-    <button id="deleteTaskBtn">Delete Task's</button>
+          <tbody id="taskBody"></tbody>
+        </table>
+
+        <form id="taskForm" style="display: none;">
+
+          <input type="text" class="txtInput" id="taskNameInput" placeholder="Task Name" required />
+          <input type="text" class="txtInput" id="taskDescInput" placeholder="Task Description" required />
+        </form>
+
+      </div>
+      
+
+      <button id="deleteTaskBtn">Delete Task's</button>
+
+    </div>
+   
     
     <script type="module" src="/src/main.js"></script>
   </body>

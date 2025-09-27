@@ -1,7 +1,13 @@
 body{
     font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 20px;
+    padding: 32px;
+    margin: 26px; 
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 button{
@@ -17,6 +23,7 @@ button{
   background-color: #1DA21B;
   color: white;
   cursor: pointer;
+  align-self: flex-end;
 }
 
 #addTaskBtn:hover{
@@ -24,21 +31,22 @@ button{
 }
 
 #deleteTaskBtn{
-  background-color: #E91E63;
+  background-color: #F26F9B;
   color: white;
   cursor: pointer;
+  align-self: flex-start;
 }
 
-#deleteTaskBtn:hover{
-  background-color: #F26F9B;
+.tableContainer{
+  width: 100%;
+  max-width: 100%;
+  background: #D9D9D9;
+  border-radius: 8px;
 }
 
 table{
-  border: collapse;
   width: 100%;
-  max-width: 500px;
-  background: white;
-  border-radius: 8px;
+  border: collapse;
   overflow: hidden;
   align-items: center;
 }
@@ -47,4 +55,18 @@ th, td{
   padding: 12px;
   text-align: center;
   border-bottom: 1px solid #ddd;
+}
+
+form{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 12px;
+}
+
+.txtInput{
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  background-color: #D9D9D9;
 }
