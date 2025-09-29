@@ -47,7 +47,7 @@ button{
   align-self: flex-start;
 }
 
-#completeBtn.active{
+#completeBtn.completed{
   background-color: #1e6bdf;
   cursor: pointer;
 }
@@ -58,7 +58,7 @@ button{
   align-self: flex-start;
 }
 
-#incompleteBtn.active{
+#incompleteBtn.incomplete{
   background-color: #e88d2b;
   cursor: pointer;
 }

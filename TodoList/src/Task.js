@@ -1,9 +1,11 @@
 const deleteTaskBtn = document.getElementById('deleteTaskBtn');
-const taskBody = document.getElementById('taskBody');
 const addTaskBtn = document.getElementById('addTaskBtn');
+const completeBtn = document.getElementById('completeBtn');
+const incompleteBtn = document.getElementById('incompleteBtn');
+const taskBody = document.getElementById('taskBody');
 const taskForm = document.getElementById('taskForm');
+const buttonsDiv = document.getElementById('buttonsDiv');
 
-//Add event listeners to buttons
 
 addTaskBtn.addEventListener('click', () => {
   
@@ -14,7 +16,33 @@ addTaskBtn.addEventListener('click', () => {
   }
 });
 
-// Delete tasks when delete button is clicked
+completeBtn.addEventListener('click', () => {
+
+  const checkboxes = document.querySelectorAll('.taskCheckBox');
+
+  checkboxes.forEach((checkbox) => {
+    
+    if (checkbox.checked) {
+
+      const row = checkbox.closest('tr');
+      row.style.backgroundColor = '#B0C8FF';
+      
+    }
+  });
+});
+
+incompleteBtn.addEventListener('click', () => {
+    
+  const checkboxes = document.querySelectorAll('.taskCheckBox');
+
+    checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+            const row = checkbox.closest('tr');
+            row.style.backgroundColor = '#FFE0B0';
+        }
+    });
+});
+
 
 deleteTaskBtn.addEventListener('click', () => {
 
@@ -32,24 +60,31 @@ deleteTaskBtn.addEventListener('click', () => {
   });
 });
 
-function updateDeleteButtonState() {
+function updateButtonState() {
 
   const checkboxes = document.querySelectorAll('.taskCheckBox');
   let anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
   
   if (anyChecked) {
     deleteTaskBtn.classList.add('active');
-    deleteTaskBtn.disabled = false;
+    completeBtn.classList.add('completed');
+    incompleteBtn.classList.add('incomplete');
+
+    buttonsDiv.disabled = false;
+
   } else {
-    deleteTaskBtn.disabled = true;
+    buttonsDiv.disabled = true;
+
     deleteTaskBtn.classList.remove('active');
+    completeBtn.classList.remove('completed');
+    incompleteBtn.classList.remove('incomplete');
   }
 }
 
 taskBody.addEventListener('change', (event) => {
 
   if (event.target.classList.contains('taskCheckBox')) {
-    updateDeleteButtonState();
+    updateButtonState();
   }
 });
 
