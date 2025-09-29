@@ -48,25 +48,27 @@ table{
   width: 100%;
   border: collapse;
   overflow: hidden;
-  align-items: center;
 }
 
 th, td{
   padding: 12px;
   text-align: center;
-  border-bottom: 1px solid #ddd;
 }
 
 form{
   display: flex;
   flex-direction: row;
   width: 100%;
+  max-width: 100%;
   gap: 12px;
 }
 
 .txtInput{
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   border: none;
   border-radius: 4px;
   background-color: #D9D9D9;
+  padding: 8px 12px;
+  box-sizing: border-box;
 }
