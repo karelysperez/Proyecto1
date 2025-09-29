@@ -1,6 +1,5 @@
 import './style.css'
-import './AddTask.js'
-import './deleteTask.js'
+import './Task.js'
 
 const taskBody = document.getElementById('taskBody');
 const taskForm = document.getElementById('taskForm');

@@ -1,5 +1,20 @@
 const deleteTaskBtn = document.getElementById('deleteTaskBtn');
 const taskBody = document.getElementById('taskBody');
+const addTaskBtn = document.getElementById('addTaskBtn');
+const taskForm = document.getElementById('taskForm');
+
+//Add event listeners to buttons
+
+addTaskBtn.addEventListener('click', () => {
+  
+  if (taskForm.style.display === 'none') {
+    taskForm.style.display = '';
+  } else {
+    taskForm.style.display = 'none';
+  }
+});
+
+// Delete tasks when delete button is clicked
 
 deleteTaskBtn.addEventListener('click', () => {
 
@@ -37,3 +52,4 @@ taskBody.addEventListener('change', (event) => {
     updateDeleteButtonState();
   }
 });
+
