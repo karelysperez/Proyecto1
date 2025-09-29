@@ -41,6 +41,28 @@ button{
   cursor: pointer;
 }
 
+#completeBtn{
+  background-color: #64aae3;
+  color: white;
+  align-self: flex-start;
+}
+
+#completeBtn.active{
+  background-color: #1e6bdf;
+  cursor: pointer;
+}
+
+#incompleteBtn{
+  background-color: #e7b15f;
+  color: white;
+  align-self: flex-start;
+}
+
+#incompleteBtn.active{
+  background-color: #e88d2b;
+  cursor: pointer;
+}
+
 .tableContainer{
   width: 100%;
   max-width: 100%;
