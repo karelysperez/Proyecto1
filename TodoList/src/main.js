@@ -7,8 +7,10 @@ const taskNameInput = document.getElementById('taskNameInput');
 const taskDescInput = document.getElementById('taskDescInput');
 
 window.addEventListener('DOMContentLoaded', () => {
-    const task = JSON.parse(localStorage.getItem('task')) || [];
-    task.forEach((task) => {
+
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    
+    tasks.forEach((task) => {
         addRow(task.name, task.desc);
     });
 });
@@ -19,11 +21,11 @@ taskForm.addEventListener('submit', (event) => {
   const taskName = taskNameInput.value;
   const taskDesc = taskDescInput.value;
 
-  const task = JSON.parse(localStorage.getItem('task')) || [];
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-  task.push({ name: taskName, desc: taskDesc });
+  tasks.push({ name: taskName, desc: taskDesc });
 
-  localStorage.setItem('task', JSON.stringify(task));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 
   addRow(taskName, taskDesc);
 
@@ -33,14 +35,16 @@ taskForm.addEventListener('submit', (event) => {
 });
 
 function addRow(taskName, taskDesc) {
+
   const row = document.createElement('tr');
+
   row.innerHTML = `
     <td>${taskName}</td>
     <td>${taskDesc}</td>
     <td><input type="checkbox" class="taskCheckBox"></td>
   `;
 
-    taskBody.appendChild(row);
+  taskBody.appendChild(row);
 }
 
 
