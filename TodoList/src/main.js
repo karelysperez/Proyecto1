@@ -17,7 +17,7 @@ taskForm.addEventListener('submit', (event) => {
   row.innerHTML = `
     <td>${taskName}</td>
     <td>${taskDesc}</td>
-    <td><input type="checkbox" class="taskCheckbox"></td>
+    <td><input type="checkbox" class="taskCheckBox"></td>
   `;
 
     taskBody.appendChild(row);
