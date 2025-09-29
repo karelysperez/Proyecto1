@@ -11,7 +11,7 @@ deleteTaskBtn.addEventListener('click', () => {
 
       const row = checkbox.closest('tr');
       
-      taskBody.removeChild(row);
+      row.remove();
       
     }
   });
@@ -32,7 +32,7 @@ function updateDeleteButtonState() {
 }
 
 taskBody.addEventListener('change', (event) => {
-    
+
   if (event.target.classList.contains('taskCheckBox')) {
     updateDeleteButtonState();
   }
