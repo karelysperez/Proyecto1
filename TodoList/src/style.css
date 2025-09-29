@@ -80,6 +80,14 @@ th, td{
   text-align: center;
 }
 
+.taskCompleted{
+  background-color: #64aae3ce;
+}
+
+.taskIncomplete{
+  background-color: #e7b15fd0;
+}
+
 form{
   display: flex;
   flex-direction: row;

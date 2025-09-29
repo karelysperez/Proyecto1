@@ -25,7 +25,7 @@ completeBtn.addEventListener('click', () => {
     if (checkbox.checked) {
 
       const row = checkbox.closest('tr');
-      row.style.backgroundColor = '#B0C8FF';
+      row.classList.add('taskCompleted');
       
     }
   });
@@ -38,7 +38,7 @@ incompleteBtn.addEventListener('click', () => {
     checkboxes.forEach((checkbox) => {
         if (checkbox.checked) {
             const row = checkbox.closest('tr');
-            row.style.backgroundColor = '#FFE0B0';
+            row.classList.add('taskIncomplete');
         }
     });
 });
