@@ -48,16 +48,24 @@ deleteTaskBtn.addEventListener('click', () => {
 
   const checkboxes = document.querySelectorAll('.taskCheckBox');
 
+  let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
   checkboxes.forEach((checkbox) => {
     
     if (checkbox.checked) {
 
       const row = checkbox.closest('tr');
+
+      const taskName = row.cells[0].textContent;
+
+      tasks = tasks.filter(task => task.name !== taskName);
       
       row.remove();
       
     }
   });
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 });
 
 function updateButtonState() {
