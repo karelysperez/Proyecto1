@@ -91,8 +91,6 @@ th, td{
 form{
   display: flex;
   flex-direction: row;
-  width: 100%;
-  max-width: 100%;
   gap: 12px;
 }
 
