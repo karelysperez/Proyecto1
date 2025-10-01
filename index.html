@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do List</title>
+    <script type="module" crossorigin src="/assets/index-CDiDaj0j.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BzIAyyKO.css">
+  </head>
+  <body>
+
+    <div id="header">
+      <h1>To-do List</h1>
+    </div>
+
+    <div class="content">
+      
+      <button id="addTaskBtn">Add Task</button>
+
+      <div class="tableContainer">
+
+        <table id="taskTable">
+          <thead id="tableHeader">
+            <tr>
+              <th>Task Name</th>
+              <th>Task Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="taskBody"></tbody>
+        </table>
+
+        <form id="taskForm" style="display: none;">
+
+          <input type="text" class="txtInput" id="taskNameInput" placeholder="Task Name" required />
+          <input type="text" class="txtInput" id="taskDescInput" placeholder="Task Description" required />
+          <button type="submit" id="submitTaskBtn" style="display: none;"></button>
+        </form>
+
+      </div>
+      
+      <div id="buttonsDiv">
+        <button id="deleteTaskBtn">Delete Task's</button>
+        <button id="completeBtn">Complete Task</button>
+        <button id="incompleteBtn">Incomplete Task</button>
+      </div>
+      
+
+    </div>
+   
+    
+  </body>
+</html>
