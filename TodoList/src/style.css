@@ -10,6 +10,12 @@ body{
   gap: 24px;
 }
 
+#buttonsDiv{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
 button{
   padding-top: 14px;
   padding-bottom: 14px;
@@ -91,6 +97,7 @@ th, td{
 form{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
