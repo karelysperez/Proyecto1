@@ -20,22 +20,21 @@ addTaskBtn.addEventListener('click', () => {
 
 completeBtn.addEventListener('click', () => {
 
+  const checkboxes = document.querySelectorAll('.taskCheckBox');
+  let tasks = getTasks();
 
-  if (checkbox.checked) {
-
-    const row = checkbox.closest('tr');
-    const taskName = row.cells[0].textContent;
-
-    const task = tasks.find(t => t.name === taskName);
-    if (task) task.status = 'completed';
-  
-    row.classList.add('taskCompleted');
-    row.classList.remove('taskIncomplete');
-      
-  }
-
-  saveTasks(tasks);
-
+    checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          const row = checkbox.closest('tr');
+          const taskName = row.cells[0].textContent;
+          
+          const task = tasks.find(t => t.name === taskName);
+          if (task) task.status = 'completed';
+          row.classList.add('taskCompleted');
+          row.classList.remove('taskIncomplete');
+        }
+    });
+    saveTasks(tasks);
 });
 
 incompleteBtn.addEventListener('click', () => {
