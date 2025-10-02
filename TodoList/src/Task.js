@@ -1,3 +1,5 @@
+import { getTasks, saveTasks } from "./Storage";
+
 const deleteTaskBtn = document.getElementById('deleteTaskBtn');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const completeBtn = document.getElementById('completeBtn');
@@ -18,29 +20,43 @@ addTaskBtn.addEventListener('click', () => {
 
 completeBtn.addEventListener('click', () => {
 
-  const checkboxes = document.querySelectorAll('.taskCheckBox');
 
-  checkboxes.forEach((checkbox) => {
-    
-    if (checkbox.checked) {
+  if (checkbox.checked) {
 
-      const row = checkbox.closest('tr');
-      row.classList.add('taskCompleted');
+    const row = checkbox.closest('tr');
+    const taskName = row.cells[0].textContent;
+
+    const task = tasks.find(t => t.name === taskName);
+    if (task) task.status = 'completed';
+  
+    row.classList.add('taskCompleted');
+    row.classList.remove('taskIncomplete');
       
-    }
-  });
+  }
+
+  saveTasks(tasks);
+
 });
 
 incompleteBtn.addEventListener('click', () => {
     
   const checkboxes = document.querySelectorAll('.taskCheckBox');
+  let tasks = getTasks();
 
     checkboxes.forEach((checkbox) => {
         if (checkbox.checked) {
-            const row = checkbox.closest('tr');
-            row.classList.add('taskIncomplete');
+          const row = checkbox.closest('tr');
+          const taskName = row.cells[0].textContent;
+
+          const task = tasks.find(t => t.name === taskName);
+          if (task) task.status = 'incomplete';
+          
+          row.classList.add('taskIncomplete');
+          row.classList.remove('taskCompleted');
+
         }
     });
+    saveTasks(tasks);
 });
 
 
@@ -48,7 +64,7 @@ deleteTaskBtn.addEventListener('click', () => {
 
   const checkboxes = document.querySelectorAll('.taskCheckBox');
 
-  let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  let tasks = getTasks();
 
   checkboxes.forEach((checkbox) => {
     
@@ -65,28 +81,29 @@ deleteTaskBtn.addEventListener('click', () => {
     }
   });
 
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+  saveTasks(tasks);
 });
 
 function updateButtonState() {
 
   const checkboxes = document.querySelectorAll('.taskCheckBox');
-  let anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-  
-  if (anyChecked) {
-    deleteTaskBtn.classList.add('active');
-    completeBtn.classList.add('completed');
-    incompleteBtn.classList.add('incomplete');
+  const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
 
-    buttonsDiv.disabled = false;
+  const buttons = [
+    {btn: deleteTaskBtn, className: 'active'},
+    {btn: completeBtn, className: 'completed'},
+    {btn: incompleteBtn, className: 'incomplete'}
+  ]
 
-  } else {
-    buttonsDiv.disabled = true;
+  buttons.forEach(({btn, className}) => {
+    if (anyChecked) {
+      btn.classList.add(className);
+    } else {
+      btn.classList.remove(className);
+    }
+  });
 
-    deleteTaskBtn.classList.remove('active');
-    completeBtn.classList.remove('completed');
-    incompleteBtn.classList.remove('incomplete');
-  }
+  buttonsDiv.disabled = !anyChecked;
 }
 
 taskBody.addEventListener('change', (event) => {

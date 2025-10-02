@@ -1,5 +1,6 @@
 import './style.css'
 import './Task.js'
+import { getTasks, saveTasks } from './Storage.js';
 
 const taskBody = document.getElementById('taskBody');
 const taskForm = document.getElementById('taskForm');
@@ -8,8 +9,8 @@ const taskDescInput = document.getElementById('taskDescInput');
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    
+  const tasks = getTasks();
+
     tasks.forEach((task) => {
         addRow(task.name, task.desc);
     });
@@ -21,20 +22,24 @@ taskForm.addEventListener('submit', (event) => {
   const taskName = taskNameInput.value;
   const taskDesc = taskDescInput.value;
 
-  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  const newTask = { 
+    name: taskName, 
+    desc: taskDesc,
+    status: null
+  };
 
-  tasks.push({ name: taskName, desc: taskDesc });
+  const tasks = getTasks();
 
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+  tasks.push(newTask);
+  saveTasks(tasks);
 
   addRow(taskName, taskDesc);
 
-  taskNameInput.value = '';
-  taskDescInput.value = '';
+  taskForm.reset();
   taskNameInput.focus();
 });
 
-function addRow(taskName, taskDesc) {
+function addRow(taskName, taskDesc, status) {
 
   const row = document.createElement('tr');
 
@@ -43,6 +48,12 @@ function addRow(taskName, taskDesc) {
     <td>${taskDesc}</td>
     <td><input type="checkbox" class="taskCheckBox"></td>
   `;
+
+  if (status === 'completed') {
+    row.classList.add('taskCompleted');
+  } else if (status === 'incomplete') {
+    row.classList.add('taskIncomplete');
+  }
 
   taskBody.appendChild(row);
 }
